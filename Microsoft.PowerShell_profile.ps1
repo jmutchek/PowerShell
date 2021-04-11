@@ -9,11 +9,13 @@
 #   git remote add origin https://github.com/jmutchek/PowerShell.git
 #   git pull origin main
 
-git -C (join-path $HOME "\Documents\PowerShell\") pull main
+git -C (join-path $HOME "\Documents\PowerShell\") pull
+
+. $(join-path $HOME "\Documents\PowerShell\" "ProfileFunctions.ps1")
 
 $profile_initialized = $false
 
-function prompt {
+function Prompt {
 
     function Initialize-Profile {
         
@@ -40,7 +42,6 @@ function prompt {
 
         # Set up the powerline prompt
         Import-Module PowerLine
-        . $(join-path $HOME "\Documents\PowerShell\" "ProfileFunctions.ps1")
         $Prompt = {}
         Add-PowerLineBlock { $MyInvocation.HistoryId }
         Add-PowerLineBlock { "&nbsp;" }
@@ -57,6 +58,7 @@ function prompt {
 
 
         $profile_initialized = $true
+        $Prompt
     }
     
     # most initialization is only required for an interactive session
