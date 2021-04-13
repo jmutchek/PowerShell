@@ -17,9 +17,12 @@ Write-Host "Using profile https://github.com/jmutchek/PowerShell/commit/$(git -C
 # Retrieve latest profile script from github (will be used in the next PowerShell session)
 git -C (join-path $HOME "\Documents\PowerShell\") pull
 
+$localConfig = Get-LocalConfig
+
 # Set up aliases
 set-alias redo invoke-history
-new-alias z 'D:\local\70-code\73-github-personal\tools\zettelkasten\scripts\z.ps1'
+new-alias z (join-path $localConfig.code_root '73-github-personal\tools\zettelkasten\scripts\z.ps1')
 
-Initialize-JohnnyDecimal @( "d:\" )
+
+Initialize-JohnnyDecimal $localConfig.jd_roots
 Initialize-Prompt

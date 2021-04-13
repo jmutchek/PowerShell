@@ -1,3 +1,25 @@
+# Set up the local config params based on current user and machine
+function Get-LocalConfig {
+    $localConfig = @{
+        jd_roots= @();
+        code_root= ''
+    }
+
+    switch ($env:USERNAME) {
+        "john5"     { $localConfig.jd_roots += "d:\" }
+        "jmutchek"  { $localConfig.jd_roots += "c:\Users\jmutchek\OneDrive - Microsoft" }
+        Default     {}
+    } 
+
+    if (Test-Path d:) {
+        $localConfig.code_root = "d:\local\70-code"
+    } else {
+        $localConfig.code_root = "c:\local\70-code"
+    }
+    
+    return $localConfig
+}
+
 # Set up environment for johnny.decimal
 function Initialize-JohnnyDecimal($roots) {
     $jd_script = "local\70-code\73-github-personal\johnny.decimal\jd.ps1"
