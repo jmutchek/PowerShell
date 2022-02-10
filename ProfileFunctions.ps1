@@ -1,4 +1,5 @@
 # Set up the powerline prompt
+# https://github.com/Jaykul/PowerLine
 function Initialize-Prompt() {
     Write-Output "Initializing prompt..."
 
