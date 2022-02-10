@@ -85,6 +85,8 @@ function Get-JDShortenedPath {
 
 # Set up the powerline prompt
 function Initialize-Prompt() {
+    # Write-Output "Initializing prompt..."
+
     Import-Module PowerLine
     if ((Get-Module PowerLine).Version -lt 3.2) {
         throw "Profile requires PowerLine 3.2+"
@@ -93,7 +95,7 @@ function Initialize-Prompt() {
     $Prompt = {}
     Add-PowerLineBlock { $MyInvocation.HistoryId }
     Add-PowerLineBlock { "&nbsp;" }
-    Add-PowerLineBlock { Get-JDShortenedPath -SingleCharacterSegment }
+    Add-PowerLineBlock { Get-ShortenedPath }
     # white background
     # Set-PowerLinePrompt -Colors "#ffffff", "#000066" -FullColor -PowerLineFont
     # black background

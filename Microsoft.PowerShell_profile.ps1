@@ -9,7 +9,7 @@
 #   git remote add origin https://github.com/jmutchek/PowerShell.git
 #   git pull origin main
 
-Write-Host "Using profile https://github.com/jmutchek/PowerShell/commit/$(git -C (join-path $HOME "\Documents\PowerShell\") rev-parse HEAD)"
+# Write-Host "Using profile https://github.com/jmutchek/PowerShell/commit/$(git -C (join-path $HOME "\Documents\PowerShell\") rev-parse HEAD)"
 
 # Load profile scipt helper functions
 . $(join-path $HOME "\Documents\PowerShell\" "ProfileFunctions.ps1")
